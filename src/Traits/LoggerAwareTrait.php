@@ -1,6 +1,6 @@
 <?php
 
-namespace duncan3dc\Log;
+namespace CBH\UiscomClient\Traits;
 
 use Psr\Log\LoggerInterface;
 use Psr\Log\NullLogger;
