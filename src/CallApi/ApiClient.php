@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace CBH\UiscomClient;
+namespace CBH\UiscomClient\CallApi;
 
 use CBH\UiscomClient\Configuration\ConfigurationInterface;
 use CBH\UiscomClient\Exceptions\RequestException;
@@ -45,7 +45,8 @@ class ApiClient
     {
         $this->config = $configuration;
         $this->httpClient = $client;
-        $this->setLogger($logger);
+        if ($logger)
+            $this->setLogger($logger);
     }
 
     /**
