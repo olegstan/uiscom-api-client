@@ -6,14 +6,26 @@ namespace CBH\UiscomClient\Configuration;
 interface ConfigurationInterface
 {
     /**
-     * @return float
+     * @return \Psr\Log\LoggerInterface
      */
-    public function getConnectionTimeout(): float;
+    public function getLogger(): \Psr\Log\LoggerInterface;
 
     /**
-     * @param float $timeout
+     * @param \Psr\Log\LoggerInterface $logger
      *
      * @return ConfigurationInterface
      */
-    public function setConnectionTimeout(float $timeout): ConfigurationInterface;
+    public function setLogger(\Psr\Log\LoggerInterface $logger): ConfigurationInterface;
+
+    /**
+     * @return string
+     */
+    public function getApiVersion(): string;
+
+    /**
+     * @param string $apiVersion
+     *
+     * @return ConfigurationInterface
+     */
+    public function setApiVersion(string $apiVersion): ConfigurationInterface;
 }

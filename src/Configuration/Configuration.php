@@ -3,18 +3,28 @@ declare(strict_types=1);
 
 namespace CBH\UiscomClient\Configuration;
 
+use CBH\UiscomClient\Exceptions\ConfigurationException;
+
 /**
  * Class Configuration.
  */
 class Configuration implements ConfigurationInterface
 {
-    public const DEFAULT_CONNECTION_TIMEOUT = 10;
+    public const API_VERSION_4 = 'v4.0';
 
-    public const DEFAULT_API_VERSION = 'v4.0';
+    public const DEFAULT_API_VERSION = self::API_VERSION_4;
 
     public const AUTH_BY_CREDENTIALS = 1;
 
     public const AUTH_BY_API_KEY = 2;
+
+    private $apiVersionsList = [
+        self::API_VERSION_4,
+    ];
+
+    private $logger;
+
+    private $httpClient;
 
     /**
      * @var string
@@ -31,50 +41,80 @@ class Configuration implements ConfigurationInterface
      */
     private $password;
 
-    /**
-     * @var float
-     */
-    private $connectionTimeout = self::DEFAULT_CONNECTION_TIMEOUT;
+    private $apiVersion = self::DEFAULT_API_VERSION;
 
     /**
      * Configuration constructor.
      *
      * @param int $authVariant
      * @param array $authData
-     * @param array $params
+     * @param \GuzzleHttp\ClientInterface $httpClient
+     *
+     * @throws ConfigurationException
      */
-    public function __construct(int $authVariant, array $authData, array $params = [])
+    public function __construct(int $authVariant, array $authData, \GuzzleHttp\ClientInterface $httpClient)
     {
+        $this->httpClient = $httpClient;
+
         switch ($authVariant) {
             case self::AUTH_BY_CREDENTIALS:
-                if (!isset($params['login'], $params['password'])) {
-
+                if (!isset($authData['login'], $authData['password'])) {
+                    throw new ConfigurationException("'login' or 'password' are not specified");
                 }
 
                 break;
-        }
+            case self::AUTH_BY_API_KEY:
+                if (!isset($authData['api_key'])) {
+                    throw new ConfigurationException("'api_key' is not specified");
+                }
 
-        if (isset($params['timeout'])) {
-            $this->setConnectionTimeout($params['timeout']);
+                break;
+            default:
+                throw new ConfigurationException('Unknown authorization type');
         }
     }
 
     /**
-     * @return float
+     * @return \Psr\Log\LoggerInterface
      */
-    public function getConnectionTimeout(): float
+    public function getLogger(): \Psr\Log\LoggerInterface
     {
-        return $this->connectionTimeout;
+        return $this->logger;
     }
 
     /**
-     * @param float $timeout
+     * @param \Psr\Log\LoggerInterface $logger
      *
-     * @return Configuration
+     * @return ConfigurationInterface
      */
-    public function setConnectionTimeout(float $timeout): ConfigurationInterface
+    public function setLogger(\Psr\Log\LoggerInterface $logger): ConfigurationInterface
     {
-        $this->connectionTimeout = $timeout;
+        $this->logger = $logger;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getApiVersion(): string
+    {
+        return $this->apiVersion;
+    }
+
+    /**
+     * @param string $apiVersion
+     *
+     * @throws ConfigurationException
+     *
+     * @return ConfigurationInterface
+     */
+    public function setApiVersion(string $apiVersion): ConfigurationInterface
+    {
+        if (!in_array($apiVersion, $this->apiVersionsList, true))
+            throw new ConfigurationException("Unknown api version: {$apiVersion}, please, check your configuration");
+
+        $this->apiVersion = $apiVersion;
 
         return $this;
     }

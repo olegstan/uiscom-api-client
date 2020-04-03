@@ -3,18 +3,18 @@ declare(strict_types=1);
 
 namespace CBH\UiscomClient\CallApi;
 
+use CBH\UiscomClient\AbstractWrapper;
 use CBH\UiscomClient\Configuration\ConfigurationInterface;
 use CBH\UiscomClient\Exceptions\RequestException;
 use CBH\UiscomClient\Traits\LoggerAwareTrait;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\RequestOptions;
-use Psr\Log\LoggerInterface;
 
 /**
  * Class Wrapper
  */
-class Wrapper
+class Wrapper extends AbstractWrapper
 {
     use LoggerAwareTrait;
 
