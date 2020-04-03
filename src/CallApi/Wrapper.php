@@ -12,9 +12,9 @@ use GuzzleHttp\RequestOptions;
 use Psr\Log\LoggerInterface;
 
 /**
- * Class ApiClient
+ * Class Wrapper
  */
-class ApiClient
+class Wrapper
 {
     use LoggerAwareTrait;
 
@@ -31,23 +31,6 @@ class ApiClient
      * @var ConfigurationInterface
      */
     private $config;
-
-    /**
-     * ApiClient constructor.
-     *
-     * @param ConfigurationInterface $configuration
-     * @param ClientInterface $client
-     * @param null|LoggerInterface $logger
-     */
-    public function __construct(ConfigurationInterface $configuration,
-                                ClientInterface $client,
-                                LoggerInterface $logger = null)
-    {
-        $this->config = $configuration;
-        $this->httpClient = $client;
-        if ($logger)
-            $this->setLogger($logger);
-    }
 
     /**
      * @return ConfigurationInterface
