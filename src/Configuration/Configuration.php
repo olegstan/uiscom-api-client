@@ -1,8 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace CBH\UiscomClient\Contracts;
+namespace CBH\UiscomClient\Configuration;
 
+use CBH\UiscomClient\Contracts\ConfigurationInterface;
 use CBH\UiscomClient\Exceptions\ConfigurationException;
 
 /**
@@ -10,20 +11,14 @@ use CBH\UiscomClient\Exceptions\ConfigurationException;
  */
 class Configuration implements ConfigurationInterface
 {
-    public const API_VERSION_4 = 'v4.0';
-
-    public const DEFAULT_API_VERSION = self::API_VERSION_4;
-
-    public const AUTH_BY_CREDENTIALS = 1;
-
-    public const AUTH_BY_API_KEY = 2;
-
-    private $apiVersionsList = [
-        self::API_VERSION_4,
-    ];
-
+    /**
+     * @var \Psr\Log\LoggerInterface
+     */
     private $logger;
 
+    /**
+     * @var \GuzzleHttp\ClientInterface
+     */
     private $httpClient;
 
     /**
@@ -41,42 +36,20 @@ class Configuration implements ConfigurationInterface
      */
     private $password;
 
-    private $apiVersion = self::DEFAULT_API_VERSION;
+    /**
+     * @var int
+     */
+    private $authType;
 
     /**
      * Configuration constructor.
      *
-     * @param int $authVariant
-     * @param array $authData
      * @param \GuzzleHttp\ClientInterface $httpClient
      *
-     * @throws ConfigurationException
      */
-    public function __construct(int $authVariant, array $authData, \GuzzleHttp\ClientInterface $httpClient)
+    public function __construct(\GuzzleHttp\ClientInterface $httpClient)
     {
         $this->httpClient = $httpClient;
-
-        switch ($authVariant) {
-            case self::AUTH_BY_CREDENTIALS:
-                if (!isset($authData['login'], $authData['password'])) {
-                    throw new ConfigurationException("'login' or 'password' are not specified");
-                }
-
-                $this->login = $authData['login'];
-                $this->password = $authData['password'];
-
-                break;
-            case self::AUTH_BY_API_KEY:
-                if (!isset($authData['api_key'])) {
-                    throw new ConfigurationException("'api_key' is not specified");
-                }
-
-                $this->apiKey = $authData['api_key'];
-
-                break;
-            default:
-                throw new ConfigurationException('Unknown authorization type');
-        }
     }
 
     /**
@@ -102,24 +75,98 @@ class Configuration implements ConfigurationInterface
     /**
      * @return string
      */
-    public function getApiVersion(): string
+    public function getLogin(): string
     {
-        return $this->apiVersion;
+        return $this->login;
     }
 
     /**
-     * @param string $apiVersion
-     *
-     * @throws ConfigurationException
+     * @param string $login
      *
      * @return ConfigurationInterface
      */
-    public function setApiVersion(string $apiVersion): ConfigurationInterface
+    public function setLogin(string $login): ConfigurationInterface
     {
-        if (!in_array($apiVersion, $this->apiVersionsList, true))
-            throw new ConfigurationException("Unknown api version: {$apiVersion}, please, check your configuration");
+        $this->login = $login;
 
-        $this->apiVersion = $apiVersion;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPassword(): string
+    {
+        return $this->password;
+    }
+
+    /**
+     * @param string $password
+     *
+     * @return ConfigurationInterface
+     */
+    public function setPassword(string $password): ConfigurationInterface
+    {
+        $this->password = $password;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getApiKey(): string
+    {
+        return $this->apiKey;
+    }
+
+    /**
+     * @param string $apiKey
+     *
+     * @return ConfigurationInterface
+     */
+    public function setApiKey(string $apiKey): ConfigurationInterface
+    {
+        $this->apiKey = $apiKey;
+
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getAuthType(): int
+    {
+        return $this->authType;
+    }
+
+    /**
+     * @param int $authType
+     *
+     * @return ConfigurationInterface
+     */
+    public function setAuthType(int $authType): ConfigurationInterface
+    {
+        $this->authType = $authType;
+
+        return $this;
+    }
+
+    /**
+     * @return \GuzzleHttp\ClientInterface
+     */
+    public function getHttpClient(): \GuzzleHttp\ClientInterface
+    {
+        return $this->httpClient;
+    }
+
+    /**
+     * @param \GuzzleHttp\ClientInterface $httpClient
+     * @return ConfigurationInterface
+     */
+    public function setHttpClient(\GuzzleHttp\ClientInterface $httpClient): ConfigurationInterface
+    {
+        $this->httpClient = $httpClient;
 
         return $this;
     }

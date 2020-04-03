@@ -48,7 +48,7 @@ class ApiClient
     /**
      * @return DataApi\Wrapper
      */
-    public function dataApi()
+    public function dataApi(): DataApi\Wrapper
     {
         return $this->dataApiWrapper;
     }
@@ -56,7 +56,7 @@ class ApiClient
     /**
      * @return CallApi\Wrapper
      */
-    public function callApi()
+    public function callApi(): CallApi\Wrapper
     {
         return $this->callApiWrapper;
     }

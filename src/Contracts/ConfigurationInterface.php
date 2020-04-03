@@ -5,6 +5,56 @@ namespace CBH\UiscomClient\Contracts;
 
 interface ConfigurationInterface
 {
+    public const AAA = 5;
+
+    /**
+     * @return string
+     */
+    public function getLogin(): string;
+
+    /**
+     * @param string $login
+     *
+     * @return ConfigurationInterface
+     */
+    public function setLogin(string $login): ConfigurationInterface;
+
+    /**
+     * @return string
+     */
+    public function getPassword(): string;
+
+    /**
+     * @param string $password
+     *
+     * @return ConfigurationInterface
+     */
+    public function setPassword(string $password): ConfigurationInterface;
+
+    /**
+     * @return string
+     */
+    public function getApiKey(): string;
+
+    /**
+     * @param string $apiKey
+     *
+     * @return ConfigurationInterface
+     */
+    public function setApiKey(string $apiKey): ConfigurationInterface;
+
+    /**
+     * @return int
+     */
+    public function getAuthType(): int;
+
+    /**
+     * @param int $authType
+     *
+     * @return ConfigurationInterface
+     */
+    public function setAuthType(int $authType): ConfigurationInterface;
+
     /**
      * @return \Psr\Log\LoggerInterface
      */
@@ -18,14 +68,13 @@ interface ConfigurationInterface
     public function setLogger(\Psr\Log\LoggerInterface $logger): ConfigurationInterface;
 
     /**
-     * @return string
+     * @return \GuzzleHttp\ClientInterface
      */
-    public function getApiVersion(): string;
+    public function getHttpClient(): \GuzzleHttp\ClientInterface;
 
     /**
-     * @param string $apiVersion
-     *
+     * @param \GuzzleHttp\ClientInterface $httpClient
      * @return ConfigurationInterface
      */
-    public function setApiVersion(string $apiVersion): ConfigurationInterface;
+    public function setHttpClient(\GuzzleHttp\ClientInterface $httpClient): ConfigurationInterface;
 }
