@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace CBH\UiscomClient\Configuration;
+namespace CBH\UiscomClient\Contracts;
 
 use CBH\UiscomClient\Exceptions\ConfigurationException;
 
@@ -62,11 +62,16 @@ class Configuration implements ConfigurationInterface
                     throw new ConfigurationException("'login' or 'password' are not specified");
                 }
 
+                $this->login = $authData['login'];
+                $this->password = $authData['password'];
+
                 break;
             case self::AUTH_BY_API_KEY:
                 if (!isset($authData['api_key'])) {
                     throw new ConfigurationException("'api_key' is not specified");
                 }
+
+                $this->apiKey = $authData['api_key'];
 
                 break;
             default:

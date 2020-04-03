@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace CBH\UiscomClient;
 
-use CBH\UiscomClient\Configuration\ConfigurationInterface;
+use CBH\UiscomClient\Contracts\ConfigurationInterface;
 use CBH\UiscomClient\Http\ApiRequest;
 
 /**
@@ -26,6 +26,9 @@ class ApiClient
      */
     private $config;
 
+    /**
+     * @var ApiRequest
+     */
     private $requester;
 
     /**
