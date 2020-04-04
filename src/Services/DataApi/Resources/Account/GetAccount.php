@@ -38,11 +38,13 @@ class GetAccount extends AbstractDataApiResource
     /**
      * Выполнение запроса
      *
+     * @throws \CBH\UiscomClient\Exceptions\ApiException
+     * @throws \CBH\UiscomClient\Exceptions\RequestException
+     *
      * @return Entities\Account
      */
     public function execute(): Entities\Account
     {
-        echo 'Собираюсь выполнить запросец один, го вместе?' . PHP_EOL;
         $response = $this->requester->execute($this);
 
         $account = new Entities\Account();

@@ -55,8 +55,6 @@ class ApiRequest
         $params = $resource->buildParamsForRequest();
         $params['access_token'] = $accessToken;
 
-        die($accessToken);
-
         $requestParams = [
             'jsonrpc' => '2.0',
             'id' => 0,
