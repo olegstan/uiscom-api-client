@@ -41,26 +41,6 @@ class Configuration implements ConfigurationInterface
     private $authType;
 
     /**
-     * @var string
-     */
-    private $dataApiHost = Constants::DATA_API_URL;
-
-    /**
-     * @var string
-     */
-    private $dataApiVersion = Constants::DATA_API_VERSION_2;
-
-    /**
-     * @var string
-     */
-    private $callApiHost = Constants::CALL_API_URL;
-
-    /**
-     * @var string
-     */
-    private $callApiVersion = Constants::CALL_API_VERSION_4;
-
-    /**
      * Configuration constructor.
      *
      * @param \GuzzleHttp\ClientInterface $httpClient
@@ -168,82 +148,6 @@ class Configuration implements ConfigurationInterface
     {
         $this->httpClient = $httpClient;
 
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getDataApiHost(): string
-    {
-        return $this->dataApiHost;
-    }
-
-    /**
-     * @param string $dataApiHost
-     *
-     * @return ConfigurationInterface
-     */
-    public function setDataApiHost(string $dataApiHost): ConfigurationInterface
-    {
-        $this->dataApiHost = $dataApiHost;
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getDataApiVersion(): string
-    {
-        return $this->dataApiVersion;
-    }
-
-    /**
-     * @param string $dataApiVersion
-     *
-     * @return ConfigurationInterface
-     */
-    public function setDataApiVersion(string $dataApiVersion): ConfigurationInterface
-    {
-        $this->dataApiVersion = $dataApiVersion;
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getCallApiHost(): string
-    {
-        return $this->callApiHost;
-    }
-
-    /**
-     * @param string $callApiHost
-     *
-     * @return ConfigurationInterface
-     */
-    public function setCallApiHost(string $callApiHost): ConfigurationInterface
-    {
-        $this->callApiHost = $callApiHost;
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getCallApiVersion(): string
-    {
-        return $this->callApiVersion;
-    }
-
-    /**
-     * @param string $callApiVersion
-     *
-     * @return ConfigurationInterface
-     */
-    public function setCallApiVersion(string $callApiVersion): ConfigurationInterface
-    {
-        $this->callApiVersion = $callApiVersion;
         return $this;
     }
 }

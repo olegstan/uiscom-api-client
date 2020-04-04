@@ -72,55 +72,8 @@ interface ConfigurationInterface
 
     /**
      * @param \GuzzleHttp\ClientInterface $httpClient
+     *
      * @return ConfigurationInterface
      */
     public function setHttpClient(\GuzzleHttp\ClientInterface $httpClient): ConfigurationInterface;
-
-    /**
-     * @return string
-     */
-    public function getDataApiHost(): string;
-
-    /**
-     * @param string $dataApiHost
-     *
-     * @return ConfigurationInterface
-     */
-    public function setDataApiHost(string $dataApiHost): ConfigurationInterface;
-
-    /**
-     * @return string
-     */
-    public function getDataApiVersion(): string;
-
-    /**
-     * @param string $dataApiVersion
-     *
-     * @return ConfigurationInterface
-     */
-    public function setDataApiVersion(string $dataApiVersion): ConfigurationInterface;
-
-    /**
-     * @return string
-     */
-    public function getCallApiHost(): string;
-
-    /**
-     * @param string $callApiHost
-     *
-     * @return ConfigurationInterface
-     */
-    public function setCallApiHost(string $callApiHost): ConfigurationInterface;
-
-    /**
-     * @return string
-     */
-    public function getCallApiVersion(): string;
-
-    /**
-     * @param string $callApiVersion
-     *
-     * @return ConfigurationInterface
-     */
-    public function setCallApiVersion(string $callApiVersion): ConfigurationInterface;
 }

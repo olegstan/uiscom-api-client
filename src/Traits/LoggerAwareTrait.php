@@ -2,6 +2,7 @@
 
 namespace CBH\UiscomClient\Traits;
 
+use CBH\UiscomClient\Contracts\ConfigurationInterface;
 use Psr\Log\LoggerInterface;
 use Psr\Log\NullLogger;
 
@@ -23,7 +24,7 @@ trait LoggerAwareTrait
      *
      * @return $this
      */
-    public function setLogger(LoggerInterface $logger)
+    public function setLogger(LoggerInterface $logger): ConfigurationInterface
     {
         $this->logger = $logger;
 

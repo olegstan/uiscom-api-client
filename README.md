@@ -1,4 +1,4 @@
-####Пример использования:
+###Пример использования:
 
 ```php
 use \CBH\UiscomClient\Configuration\Configuration;
