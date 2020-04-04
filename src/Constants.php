@@ -22,4 +22,12 @@ class Constants
     public const AUTH_BY_CREDENTIALS = 1;
 
     public const AUTH_BY_API_KEY = 2;
+
+    /* Версии API */
+    public const CALL_API_VERSION_4 = 'v4.0';
+
+    public const DATA_API_VERSION_2 = 'v2.0';
+
+    /* Опции HTTP-запроса по умолчанию */
+    public const USER_AGENT = 'CBH-Uiscom-Client';
 }

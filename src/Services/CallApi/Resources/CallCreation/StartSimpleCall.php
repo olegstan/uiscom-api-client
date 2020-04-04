@@ -1,16 +1,16 @@
 <?php
 declare(strict_types=1);
 
-namespace CBH\UiscomClient\CallApi\Endpoints\CallCreation;
+namespace CBH\UiscomClient\CallApi\Resources\CallCreation;
 
 use CBH\UiscomClient\Constants;
-use CBH\UiscomClient\Contracts\EndpointInterface;
+use CBH\UiscomClient\Contracts\ResourceInterface;
 
 /**
  * Class StartSimpleCall
  * https://comagic.github.io/call-api/#start.simple_call
  */
-class StartSimpleCall implements EndpointInterface
+class StartSimpleCall implements ResourceInterface
 {
     /**
      * @var string - кому первому звоним (operator или contact)
@@ -20,7 +20,7 @@ class StartSimpleCall implements EndpointInterface
     /**
      * @return string
      */
-    public function getEndpointName(): string
+    public function getResourceName(): string
     {
         return Constants::CALL_API_METHOD_START_SIMPLE_CALL;
     }

@@ -5,6 +5,8 @@ namespace CBH\UiscomClient;
 
 use CBH\UiscomClient\Contracts\ConfigurationInterface;
 use CBH\UiscomClient\Http\ApiRequest;
+use CBH\UiscomClient\Services\DataApi;
+use CBH\UiscomClient\Services\CallApi;
 
 /**
  * Class ApiClient.
@@ -12,12 +14,12 @@ use CBH\UiscomClient\Http\ApiRequest;
 class ApiClient
 {
     /**
-     * @var DataApi\Wrapper
+     * @var DataApi\ApiWrapper
      */
     private $dataApiWrapper;
 
     /**
-     * @var CallApi\Wrapper
+     * @var CallApi\ApiWrapper
      */
     private $callApiWrapper;
 
@@ -27,36 +29,31 @@ class ApiClient
     private $config;
 
     /**
-     * @var ApiRequest
-     */
-    private $requester;
-
-    /**
      * ApiClient constructor.
      *
      * @param ConfigurationInterface $config
      */
     public function __construct(ConfigurationInterface $config)
     {
-        $this->dataApiWrapper = new DataApi\Wrapper();
-        $this->callApiWrapper = new CallApi\Wrapper();
-        $this->requester = new ApiRequest();
+        $requester = new ApiRequest($config);
 
         $this->config = $config;
+        $this->dataApiWrapper = new DataApi\ApiWrapper($requester);
+        $this->callApiWrapper = new CallApi\ApiWrapper($requester);
     }
 
     /**
-     * @return DataApi\Wrapper
+     * @return DataApi\ApiWrapper
      */
-    public function dataApi(): DataApi\Wrapper
+    public function dataApi(): DataApi\ApiWrapper
     {
         return $this->dataApiWrapper;
     }
 
     /**
-     * @return CallApi\Wrapper
+     * @return CallApi\ApiWrapper
      */
-    public function callApi(): CallApi\Wrapper
+    public function callApi(): CallApi\ApiWrapper
     {
         return $this->callApiWrapper;
     }
