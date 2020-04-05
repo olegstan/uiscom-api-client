@@ -27,7 +27,7 @@ try {
     $call->setContactPhone('71111111111');
     $call->setOperatorPhone('72222222222');
     ...
-    $callSessionEntity = $call->run();
+    $callSessionEntity = $call->execute();
 } catch (CBH\UiscomClient\Exceptions\BaseException $e) {
     ...
 }
@@ -36,14 +36,14 @@ try {
 ##### Можно передать параметры через конструктор
 ```php
 $params = [
-    'call_first' => 'operator',
+    'first_call' => 'operator',
     'contact'    => '71111111111',
     'operator'   => '72222222222',
     ...
 ];
 try {
     $call = $apiClient->callApi()->getSimpleCall($params);
-    $callSessionEntity = $call->run();
+    $callSessionEntity = $call->execute();
 } catch (CBH\UiscomClient\Exceptions\BaseException $e) {
     ...
 }
@@ -82,6 +82,7 @@ class GetAccount extends CBH\UiscomClient\Services\DataApi\Resources\AbstractDat
 
 $httpClient = new GuzzleHttp\Client();
 $config = new Configuration($httpClient);
+$apiClient = ApiFactory::makeApiClientWithApiKey('api_key', $config);
 
 $apiClient->dataApi()->registerResource(new GetAccount());
 ```

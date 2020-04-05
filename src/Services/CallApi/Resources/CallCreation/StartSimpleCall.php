@@ -414,11 +414,23 @@ class StartSimpleCall extends AbstractCallApiResource
         return $params;
     }
 
+    /**
+     * @throws ResourceException
+     * @throws \CBH\UiscomClient\Exceptions\ApiException
+     * @throws \CBH\UiscomClient\Exceptions\RequestException
+     *
+     * @return Entities\CallSession
+     */
     public function execute(): Entities\CallSession
     {
         $response = $this->requester->execute($this);
 
+        if (!isset($response['data']['call_session_id'])) {
+            throw new ResourceException('Missing call session id');
+        }
+
         $callSession = new Entities\CallSession();
+        $callSession->callSessionId = $response['data']['call_session_id'];
 
         return $callSession;
     }

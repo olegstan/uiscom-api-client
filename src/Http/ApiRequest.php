@@ -57,7 +57,7 @@ class ApiRequest
 
         $requestParams = [
             'jsonrpc' => '2.0',
-            'id' => 0,
+            'id' => mt_rand(1, 9999),
             'method' => $resource->getResourceName(),
             'params' => $params,
         ];
@@ -83,9 +83,13 @@ class ApiRequest
             throw new RequestException($content['error']['message'], $content['error']['code']);
         }
 
+        if (!isset($content['result'])) {
+            throw new RequestException('Empty result');
+        }
+
         $this->resource = null;
 
-        return $content;
+        return $content['result'];
     }
 
     /**
