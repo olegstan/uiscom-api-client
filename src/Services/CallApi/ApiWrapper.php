@@ -4,13 +4,15 @@ declare(strict_types=1);
 namespace CBH\UiscomClient\Services\CallApi;
 
 use CBH\UiscomClient\Services\CallApi\Resources;
+use CBH\UiscomClient\Services\CallApi\Entities;
 use CBH\UiscomClient\Constants;
 use CBH\UiscomClient\Services\AbstractApiWrapper;
 
 /**
  * Class ApiWrapper
  *
- * @method Resources\CallCreation\StartSimpleCall getSimpleCall(...$args)
+ * @method Resources\CallCreation\StartSimpleCall getSimpleCall(array $params = [])
+ * @method Resources\CallActions\TagCall          setCallTag(Entities\CallSession $callSession, int $tagId)
  */
 class ApiWrapper extends AbstractApiWrapper
 {

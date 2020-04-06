@@ -36,10 +36,14 @@ class Constants
     /* Названия конечных методов API */
     public const CALL_API_START_SIMPLE_CALL_RESOURCE = 'start.simple_call';
 
+    public const CALL_API_TAG_CALL_RESOURCE = 'tag.call';
+
     public const DATA_API_GET_ACCOUNT_RESOURCE = 'get.account';
 
     /* Названия методов ресурсов */
     public const CALL_API_START_SIMPLE_CALL_METHOD = 'getSimpleCall';
+
+    public const CALL_API_TAG_CALL_METHOD = 'setCallTag';
 
     public const DATA_API_GET_ACCOUNT_METHOD = 'getAccount';
 
