@@ -371,7 +371,7 @@ class StartMultiCall extends AbstractCallApiResource
      */
     public function getResourceName(): string
     {
-        return Constants::CALL_API_START_SIMPLE_CALL_RESOURCE;
+        return Constants::CALL_API_START_MULTI_CALL_RESOURCE;
     }
 
     /**
