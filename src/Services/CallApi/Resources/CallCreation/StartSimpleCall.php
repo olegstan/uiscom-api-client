@@ -42,7 +42,7 @@ class StartSimpleCall extends AbstractCallApiResource
     /**
      * @var bool
      */
-    private $showVirtualPhoneNumber = true;
+    private $showVirtualPhoneNumber = false;
 
     /**
      * @var string

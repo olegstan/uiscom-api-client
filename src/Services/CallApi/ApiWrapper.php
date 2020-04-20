@@ -12,12 +12,15 @@ use CBH\UiscomClient\Services\AbstractApiWrapper;
  * Class ApiWrapper
  *
  * @method Resources\CallCreation\StartSimpleCall getSimpleCall(array $params = [])
+ * @method Resources\CallCreation\StartMultiCall  getMultiCall(array $params = [])
  * @method Resources\CallActions\TagCall          setCallTag(Entities\CallSession $callSession, int $tagId)
  */
 class ApiWrapper extends AbstractApiWrapper
 {
     protected $resources = [
         Constants::CALL_API_START_SIMPLE_CALL_METHOD => Resources\CallCreation\StartSimpleCall::class,
+        Constants::CALL_API_START_MULTI_CALL_METHOD => Resources\CallCreation\StartMultiCall::class,
+        Constants::CALL_API_TAG_CALL_METHOD => Resources\CallActions\TagCall::class,
     ];
 
     public function getServiceName(): string
