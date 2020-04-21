@@ -49,6 +49,81 @@ try {
 }
 ```
 
+##### Пример отчета по звонкам
+```php
+$config = new \CBH\UiscomClient\Configuration\Configuration(new GuzzleHttp\Client());
+$apiClient = \CBH\UiscomClient\ApiFactory::makeApiClientWithApiKey('api_key', $config);
+
+try {
+    $callsReport = $apiClient->dataApi()->getCallsReport();
+
+    $callsReport->setPaginator(new \CBH\UiscomClient\Services\DataApi\Pagination\Paginator(20));
+
+    $callsReport->setFields([
+        \CBH\UiscomClient\Services\DataApi\Fields\Call::CALL_SESSION_ID,
+        \CBH\UiscomClient\Services\DataApi\Fields\Call::CALL_API_EXTERNAL_ID,
+    ]);
+
+    $callsReport->setDateFrom(new DateTime('2020-04-20 00:00:00'));
+    $callsReport->setDateTill(new DateTime('2020-04-20 23:59:00'));
+
+    $filter = new \CBH\UiscomClient\Services\DataApi\Filters\FilterWrapper(
+        \CBH\UiscomClient\Services\DataApi\Filters\FilterWrapper::AND_COND
+    );
+
+    $filter->addFilter(new \CBH\UiscomClient\Services\DataApi\Filters\Filter(
+        \CBH\UiscomClient\Services\DataApi\Fields\Call::SOURCE,
+        \CBH\UiscomClient\Services\DataApi\Filters\Comparison::EQUAL,
+        \CBH\UiscomClient\Constants::CALL_SOURCE_CALL_API
+    ));
+    $filter->addFilter(new \CBH\UiscomClient\Services\DataApi\Filters\Filter(
+        \CBH\UiscomClient\Services\DataApi\Fields\Call::CALL_API_EXTERNAL_ID,
+        'like',
+        '%some_id%'
+    ));
+    $callsReport->setFilter($filter);
+
+    print_r($callsReport->execute());
+} catch (\Exception $e) {
+    ...
+}
+```
+
+##### Пример отчета по расходам
+```php
+$config = new \CBH\UiscomClient\Configuration\Configuration(new GuzzleHttp\Client());
+$apiClient = \CBH\UiscomClient\ApiFactory::makeApiClientWithApiKey('api_key', $config);
+
+try {
+    $financeReport = $apiClient->dataApi()->getFinancialCallLegsReport();
+
+    $financeReport->setPaginator(new \CBH\UiscomClient\Services\DataApi\Pagination\Paginator(20));
+
+    $financeReport->setFields([
+        \CBH\UiscomClient\Services\DataApi\Fields\FinancialCallLeg::CALL_SESSION_ID,
+        \CBH\UiscomClient\Services\DataApi\Fields\FinancialCallLeg::TOTAL_CHARGE,
+        \CBH\UiscomClient\Services\DataApi\Fields\FinancialCallLeg::START_TIME,
+        \CBH\UiscomClient\Services\DataApi\Fields\FinancialCallLeg::BONUSES_CHARGE,
+        \CBH\UiscomClient\Services\DataApi\Fields\FinancialCallLeg::COST_PER_MINUTE,
+    ]);
+
+    $financeReport->setDateFrom(new DateTime('2020-04-20 00:00:00'));
+    $financeReport->setDateTill(new DateTime('2020-04-20 23:59:00'));
+
+    $filter = new \CBH\UiscomClient\Services\DataApi\Filters\Filter(
+        \CBH\UiscomClient\Services\DataApi\Fields\FinancialCallLeg::CALL_SESSION_ID,
+        \CBH\UiscomClient\Services\DataApi\Filters\Comparison::EQUAL,
+        123456789
+    );
+
+    $financeReport->setFilter($filter);
+
+    print_r($financeReport->execute());
+} catch (\Exception $e) {
+    ...
+}
+```
+
 #### Расширение клиента, собственной реализацией методов
 На примере https://comagic.github.io/data-api/Account/
 ```php
