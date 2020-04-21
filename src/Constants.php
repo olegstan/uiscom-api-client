@@ -42,6 +42,12 @@ class Constants
 
     public const DATA_API_GET_ACCOUNT_RESOURCE = 'get.account';
 
+    public const DATA_API_GET_CALLS_REPORT_RESOURCE = 'get.calls_report';
+
+    public const DATA_API_GET_FIN_CALL_LEG_REPORT_RESOURCE = 'get.financial_call_legs_report';
+
+    public const DATA_API_SET_COMMUNICATION_TAG_RESOURCE = 'set.tag_communications';
+
     /* Названия методов ресурсов */
     public const CALL_API_START_SIMPLE_CALL_METHOD = 'getSimpleCall';
 
@@ -51,8 +57,26 @@ class Constants
 
     public const DATA_API_GET_ACCOUNT_METHOD = 'getAccount';
 
+    public const DATA_API_GET_CALLS_REPORT_METHOD = 'getCallsReport';
+
+    public const DATA_API_GET_FIN_CALL_LEGS_REPORT_METHOD = 'getFinancialCallLegsReport';
+
+    public const DATA_API_SET_COMMUNICATION_TAG_METHOD = 'setCommunicationTag';
+
     /* Типы медиа, проигрываемых каждому плечу */
     public const MESSAGE_TYPE_TTS = 'tts';
 
     public const MESSAGE_TYPE_MEDIA = 'media';
+
+    /* Типы обращений */
+    public const COMMUNICATION_TYPE_CHAT = 'chat';
+
+    public const COMMUNICATION_TYPE_CALL = 'call';
+
+    public const COMMUNICATION_TYPE_GOAL = 'goal';
+
+    public const COMMUNICATION_TYPE_OFFLINE_MESSAGE = 'offline_message';
+
+    /* Источники звонка  */
+    public const CALL_SOURCE_CALL_API = 'callapi';
 }
