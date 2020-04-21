@@ -49,4 +49,24 @@ class Call
      * @var ReportTag[]
      */
     public $tags = [];
+
+    /**
+     * Проверяет имеется ли у звонка тег с указанным идентификатором
+     *
+     * @param int $id
+     *
+     * @return bool
+     */
+    public function hasTagId(int $id): bool
+    {
+        if (count($this->tags) > 0) {
+            foreach ($this->tags as $tag) {
+                if ($tag->id === $id) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
 }
