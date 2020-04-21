@@ -20,4 +20,6 @@ class Call
     public const SOURCE = 'source';
 
     public const CALL_API_EXTERNAL_ID = 'call_api_external_id';
+
+    public const TAGS = 'tags';
 }

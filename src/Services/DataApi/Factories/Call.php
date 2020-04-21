@@ -51,6 +51,13 @@ class Call extends AbstractFactory
             $call->callApiExternalId = $data[Fields\Call::CALL_API_EXTERNAL_ID];
         }
 
+        if (isset($data[Fields\Call::TAGS]) && is_array($data[Fields\Call::TAGS]) && !empty($data[Fields\Call::TAGS])) {
+            $reportTagFactory = new ReportTag();
+            foreach ($data[Fields\Call::TAGS] as $reportTag) {
+                $call->tags[] = $reportTagFactory->fromArray($reportTag);
+            }
+        }
+
         return $call;
     }
 }
