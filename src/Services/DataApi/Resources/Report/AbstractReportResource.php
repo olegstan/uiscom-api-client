@@ -139,14 +139,14 @@ abstract class AbstractReportResource extends AbstractDataApiResource
 
         $response = $this->requester->execute($this);
 
-        if (!is_array($response['data'])) {
+        if (!is_array($response->getResult()->getData())) {
             throw new ApiException('Bad response');
         }
 
         $entities = [];
-        foreach ($response['data'] as $callLegData) {
+        foreach ($response->getResult()->getData() as $entity) {
             try {
-                $entities[] = $factory->fromArray($callLegData);
+                $entities[] = $factory->fromArray($entity);
             } catch (\Exception $e) {
                 throw new ApiException('Error when creating entity', 0, $e);
             }

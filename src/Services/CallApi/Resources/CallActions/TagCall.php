@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace CBH\UiscomClient\Services\CallApi\Resources\CallActions;
 
 use CBH\UiscomClient\Constants;
+use CBH\UiscomClient\Exceptions\ApiException;
 use CBH\UiscomClient\Exceptions\ResourceException;
 use CBH\UiscomClient\Services\CallApi\Resources\AbstractCallApiResource;
 use CBH\UiscomClient\Services\CallApi\Entities;
@@ -74,12 +75,14 @@ class TagCall extends AbstractCallApiResource
     {
         $response = $this->requester->execute($this);
 
-        if (!isset($response['data']['success'])) {
+        $data = $response->getResult()->getData();
+
+        if (!isset($data['success'])) {
             throw new ResourceException('Missing parameter success');
         }
 
         $operationResult = new Entities\OperationResult();
-        $operationResult->success = $response['data']['success'];
+        $operationResult->success = $data['success'];
 
         return $operationResult;
     }

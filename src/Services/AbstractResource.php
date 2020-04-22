@@ -3,21 +3,21 @@ declare(strict_types=1);
 
 namespace CBH\UiscomClient\Services;
 
-use CBH\UiscomClient\Http\ApiRequest;
+use CBH\UiscomClient\Http\Requester;
 
 abstract class AbstractResource
 {
     /**
-     * @var ApiRequest
+     * @var Requester
      */
     protected $requester;
 
     /**
-     * @param ApiRequest $requester
+     * @param Requester $requester
      *
      * @return AbstractResource
      */
-    public function setRequester(ApiRequest $requester): AbstractResource
+    public function setRequester(Requester $requester): AbstractResource
     {
         $this->requester = $requester;
 

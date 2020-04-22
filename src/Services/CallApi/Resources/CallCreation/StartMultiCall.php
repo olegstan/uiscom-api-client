@@ -505,12 +505,14 @@ class StartMultiCall extends AbstractCallApiResource
     {
         $response = $this->requester->execute($this);
 
-        if (!isset($response['data']['call_session_id'])) {
+        $data = $response->getResult()->getData();
+
+        if (!isset($data['call_session_id'])) {
             throw new ResourceException('Missing call session id');
         }
 
         $callSession = new Entities\CallSession();
-        $callSession->callSessionId = $response['data']['call_session_id'];
+        $callSession->callSessionId = $data['call_session_id'];
 
         return $callSession;
     }

@@ -5,12 +5,12 @@ namespace CBH\UiscomClient\Services;
 
 use CBH\UiscomClient\Exceptions\ResourceException;
 use CBH\UiscomClient\Exceptions\ServiceException;
-use CBH\UiscomClient\Http\ApiRequest;
+use CBH\UiscomClient\Http\Requester;
 
 abstract class AbstractApiWrapper
 {
     /**
-     * @var ApiRequest
+     * @var Requester
      */
     protected $requester;
 
@@ -22,9 +22,9 @@ abstract class AbstractApiWrapper
     /**
      * AbstractApiWrapper constructor.
      *
-     * @param ApiRequest $requester
+     * @param Requester $requester
      */
-    public function __construct(ApiRequest $requester)
+    public function __construct(Requester $requester)
     {
         $this->requester = $requester;
     }

@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace CBH\UiscomClient;
 
 use CBH\UiscomClient\Contracts\ConfigurationInterface;
-use CBH\UiscomClient\Http\ApiRequest;
+use CBH\UiscomClient\Http\Requester;
 
 class ApiFactory
 {

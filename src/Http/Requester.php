@@ -7,11 +7,12 @@ use CBH\UiscomClient\Constants;
 use CBH\UiscomClient\Contracts\ConfigurationInterface;
 use CBH\UiscomClient\Exceptions\ApiException;
 use CBH\UiscomClient\Exceptions\RequestException;
+use CBH\UiscomClient\Http\Entities\Response;
 use CBH\UiscomClient\Services\AbstractResource;
 use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\RequestOptions;
 
-class ApiRequest
+class Requester
 {
     /**
      * @var ConfigurationInterface
@@ -19,12 +20,7 @@ class ApiRequest
     private $config;
 
     /**
-     * @var AbstractResource
-     */
-    private $resource;
-
-    /**
-     * ApiRequest constructor.
+     * Requester constructor.
      * @param ConfigurationInterface $configuration
      */
     public function __construct(ConfigurationInterface $configuration)
@@ -35,15 +31,15 @@ class ApiRequest
     /**
      * @param AbstractResource $resource
      *
+     * @param bool $exceptionOnResponseError генерировать исключение, если в ответе вернулась ошибка (ключ error)
+     *
      * @throws ApiException
      * @throws RequestException
      *
-     * @return array
+     * @return Response
      */
-    public function execute(AbstractResource $resource): array
+    public function execute(AbstractResource $resource, bool $exceptionOnResponseError = true): Response
     {
-        $this->resource = $resource;
-
         $headers = [
             'User-Agent' => Constants::USER_AGENT,
         ];
@@ -79,17 +75,19 @@ class ApiRequest
 
         $content = json_decode($response->getBody()->getContents(), true);
 
-        if (array_key_exists('error', $content)) {
-            throw new RequestException($content['error']['message'], $content['error']['code']);
+        if (!$content) {
+            throw new RequestException('Empty response body content: ' . json_encode($content));
         }
 
-        if (!isset($content['result'])) {
-            throw new RequestException('Empty result');
+        $requesterResponse = new Response($content);
+        if ($requesterResponse->isError() && $exceptionOnResponseError) {
+            throw new ApiException(
+                "{$requesterResponse->getError()->getMessage()}; error data: ".json_encode($requesterResponse->getError()->getData()),
+                $requesterResponse->getError()->getCode()
+            );
         }
 
-        $this->resource = null;
-
-        return $content['result'];
+        return $requesterResponse;
     }
 
     /**

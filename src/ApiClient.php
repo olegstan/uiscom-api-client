@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace CBH\UiscomClient;
 
 use CBH\UiscomClient\Contracts\ConfigurationInterface;
-use CBH\UiscomClient\Http\ApiRequest;
+use CBH\UiscomClient\Http\Requester;
 use CBH\UiscomClient\Services\DataApi;
 use CBH\UiscomClient\Services\CallApi;
 
@@ -35,7 +35,7 @@ class ApiClient
      */
     public function __construct(ConfigurationInterface $config)
     {
-        $requester = new ApiRequest($config);
+        $requester = new Requester($config);
 
         $this->config = $config;
         $this->dataApiWrapper = new DataApi\ApiWrapper($requester);

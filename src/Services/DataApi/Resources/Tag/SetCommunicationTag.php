@@ -4,6 +4,8 @@ declare(strict_types=1);
 namespace CBH\UiscomClient\Services\DataApi\Resources\Tag;
 
 use CBH\UiscomClient\Constants;
+use CBH\UiscomClient\Exceptions\ApiException;
+use CBH\UiscomClient\Exceptions\RequestException;
 use CBH\UiscomClient\Services\DataApi\Resources\AbstractDataApiResource;
 
 class SetCommunicationTag extends AbstractDataApiResource
@@ -126,10 +128,15 @@ class SetCommunicationTag extends AbstractDataApiResource
     /**
      * Выполнение запроса
      *
-     * @return mixed
+     * @throws ApiException
+     * @throws RequestException
+     *
+     * @return bool
      */
-    public function execute()
+    public function execute(): bool
     {
+        $response = $this->requester->execute($this, false);
 
+        return !$response->isError();
     }
 }

@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace CBH\UiscomClient\Services\DataApi\Resources\Account;
 
 use CBH\UiscomClient\Constants;
+use CBH\UiscomClient\Exceptions\ApiException;
 use CBH\UiscomClient\Exceptions\ResourceException;
 use CBH\UiscomClient\Services\DataApi\Resources\AbstractDataApiResource;
 use CBH\UiscomClient\Services\DataApi\Entities;
@@ -49,14 +50,16 @@ class GetAccount extends AbstractDataApiResource
     {
         $response = $this->requester->execute($this);
 
-        if (!isset($response['data'][0])) {
+        $data = $response->getResult()->getData();
+
+        if (!isset($data[0])) {
             throw new ResourceException('Account not found');
         }
 
         $account = new Entities\Account();
-        $account->name = $response['data'][0]['name'];
-        $account->appId = $response['data'][0]['app_id'];
-        $account->timezone = $response['data'][0]['timezone'];
+        $account->name = $data[0]['name'];
+        $account->appId = $data[0]['app_id'];
+        $account->timezone = $data[0]['timezone'];
 
         return $account;
     }
