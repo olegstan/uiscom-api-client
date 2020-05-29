@@ -24,11 +24,6 @@ class ApiClient
     private $callApiWrapper;
 
     /**
-     * @var ConfigurationInterface
-     */
-    private $config;
-
-    /**
      * ApiClient constructor.
      *
      * @param ConfigurationInterface $config
@@ -37,9 +32,8 @@ class ApiClient
     {
         $requester = new Requester($config);
 
-        $this->config = $config;
-        $this->dataApiWrapper = new DataApi\ApiWrapper($requester);
-        $this->callApiWrapper = new CallApi\ApiWrapper($requester);
+        $this->dataApiWrapper = new DataApi\ApiWrapper($requester, $config);
+        $this->callApiWrapper = new CallApi\ApiWrapper($requester, $config);
     }
 
     /**

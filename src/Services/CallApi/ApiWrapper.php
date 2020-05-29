@@ -25,6 +25,6 @@ class ApiWrapper extends AbstractApiWrapper
 
     public function getServiceName(): string
     {
-        return Constants::CALL_API_URL;
+        return Constants::UIS_CALL_API_HOST;
     }
 }

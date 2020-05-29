@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace CBH\UiscomClient\Contracts;
 
+use CBH\UiscomClient\Configuration\Configuration;
+
 interface ConfigurationInterface
 {
     /**
@@ -52,6 +54,18 @@ interface ConfigurationInterface
      * @return ConfigurationInterface
      */
     public function setAuthType(int $authType): ConfigurationInterface;
+
+    /**
+     * @return string
+     */
+    public function getApiProvider(): string;
+
+    /**
+     * @param string $apiProvider
+     *
+     * @return Configuration
+     */
+    public function setApiProvider(string $apiProvider): Configuration;
 
     /**
      * @return \Psr\Log\LoggerInterface

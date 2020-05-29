@@ -41,6 +41,11 @@ class Configuration implements ConfigurationInterface
     private $authType;
 
     /**
+     * @var string
+     */
+    private $apiProvider = Constants::UIS;
+
+    /**
      * Configuration constructor.
      *
      * @param \GuzzleHttp\ClientInterface $httpClient
@@ -127,6 +132,26 @@ class Configuration implements ConfigurationInterface
     public function setAuthType(int $authType): ConfigurationInterface
     {
         $this->authType = $authType;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getApiProvider(): string
+    {
+        return $this->apiProvider;
+    }
+
+    /**
+     * @param string $apiProvider
+     *
+     * @return Configuration
+     */
+    public function setApiProvider(string $apiProvider): Configuration
+    {
+        $this->apiProvider = $apiProvider;
 
         return $this;
     }

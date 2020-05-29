@@ -5,15 +5,35 @@ namespace CBH\UiscomClient;
 
 class Constants
 {
+    /* Поставщики API */
+    public const UIS = 'UIS';
+
+    public const CALL_GEAR = 'CallGear';
+
     /* Названия API сервисов */
     public const CALL_API_SERVICE = 'CallApi';
 
     public const DATA_API_SERVICE = 'DataApi';
 
     /* URL адреса API сервисов UIS */
-    public const CALL_API_URL = 'https://callapi.uiscom.ru';
+    public const UIS_CALL_API_HOST = 'https://callapi.uiscom.ru';
 
-    public const DATA_API_URL = 'https://dataapi.uiscom.ru';
+    public const UIS_DATA_API_HOST = 'https://dataapi.uiscom.ru';
+
+    public const CALL_GEAR_CALL_API_HOST = 'https://callapi.callgear.com';
+
+    public const CALL_GEAR_DATA_API_HOST = 'https://dataapi.callgear.com';
+
+    public const API_HOSTS = [
+        self::UIS => [
+            self::CALL_API_SERVICE => self::UIS_CALL_API_HOST,
+            self::DATA_API_SERVICE => self::UIS_DATA_API_HOST,
+        ],
+        self::CALL_GEAR => [
+            self::CALL_API_SERVICE => self::CALL_GEAR_CALL_API_HOST,
+            self::DATA_API_SERVICE => self::CALL_GEAR_DATA_API_HOST,
+        ],
+    ];
 
     /* Обозначение посетителя и оператора в терминологии UIS */
     public const SITE_VISITOR = 'contact';

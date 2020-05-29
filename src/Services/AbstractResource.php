@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace CBH\UiscomClient\Services;
 
+use CBH\UiscomClient\Contracts\ConfigurationInterface;
 use CBH\UiscomClient\Http\Requester;
 
 abstract class AbstractResource
@@ -13,6 +14,11 @@ abstract class AbstractResource
     protected $requester;
 
     /**
+     * @var ConfigurationInterface
+     */
+    protected $config;
+
+    /**
      * @param Requester $requester
      *
      * @return AbstractResource
@@ -20,6 +26,13 @@ abstract class AbstractResource
     public function setRequester(Requester $requester): AbstractResource
     {
         $this->requester = $requester;
+
+        return $this;
+    }
+
+    public function setConfig(ConfigurationInterface $configuration): AbstractResource
+    {
+        $this->config = $configuration;
 
         return $this;
     }

@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace CBH\UiscomClient\Services;
 
+use CBH\UiscomClient\Contracts\ConfigurationInterface;
 use CBH\UiscomClient\Exceptions\ResourceException;
 use CBH\UiscomClient\Exceptions\ServiceException;
 use CBH\UiscomClient\Http\Requester;
@@ -20,13 +21,19 @@ abstract class AbstractApiWrapper
     protected $resources = [];
 
     /**
+     * @var ConfigurationInterface
+     */
+    protected $config;
+
+    /**
      * AbstractApiWrapper constructor.
      *
      * @param Requester $requester
      */
-    public function __construct(Requester $requester)
+    public function __construct(Requester $requester, ConfigurationInterface $configuration)
     {
         $this->requester = $requester;
+        $this->config = $configuration;
     }
 
     /**
@@ -57,7 +64,9 @@ abstract class AbstractApiWrapper
             throw new ServiceException("Undefined method {$name} at {$this->getServiceName()} service");
         }
 
-        $resource->setRequester($this->requester);
+        $resource
+            ->setRequester($this->requester)
+            ->setConfig($this->config);
 
         return $resource;
     }

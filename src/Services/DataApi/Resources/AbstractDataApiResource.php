@@ -20,6 +20,6 @@ abstract class AbstractDataApiResource extends AbstractResource
 
     public function getApiHost(): string
     {
-        return Constants::DATA_API_URL;
+        return Constants::API_HOSTS[$this->config->getApiProvider()][Constants::DATA_API_SERVICE];
     }
 }

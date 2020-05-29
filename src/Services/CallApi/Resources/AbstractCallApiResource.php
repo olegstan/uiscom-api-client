@@ -20,6 +20,6 @@ abstract class AbstractCallApiResource extends AbstractResource
 
     public function getApiHost(): string
     {
-        return Constants::CALL_API_URL;
+        return Constants::API_HOSTS[$this->config->getApiProvider()][Constants::CALL_API_SERVICE];
     }
 }
