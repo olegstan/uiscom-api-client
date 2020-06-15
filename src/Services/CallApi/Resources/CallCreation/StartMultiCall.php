@@ -459,6 +459,18 @@ class StartMultiCall extends AbstractCallApiResource
                     $phone['sip_trunk'] = $operatorPhone->sipTrunk;
                 }
 
+                foreach ($operatorPhone->confirmationMessages as $confirmationMessage) {
+
+                    if (null !== $confirmationMessage->type && null !== $confirmationMessage->value) {
+                        $confirmationMessage = [
+                            'type' => $confirmationMessage->type,
+                            'value' => $confirmationMessage->value
+                        ];
+
+                        $phone['confirmation_message'][] = $confirmationMessage;
+                    }
+                }
+
                 $operator['phones'][] = $phone;
             }
 
