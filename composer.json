@@ -7,7 +7,7 @@
         {
             "name": "Oleg Abramov",
             "email": "olegstan@inbox.ru"
-        },
+        }
     ],
     "autoload": {
         "psr-4": {
