@@ -21,6 +21,7 @@ class ApiWrapper extends AbstractApiWrapper
         Constants::DATA_API_GET_ACCOUNT_METHOD => Resources\Account\GetAccount::class,
         Constants::DATA_API_SET_COMMUNICATION_TAG_METHOD => Resources\Tag\SetCommunicationTag::class,
         Constants::DATA_API_GET_CALLS_REPORT_METHOD => Resources\Report\GetCalls::class,
+        Constants::DATA_API_GET_EMPLOYEE_METHOD => Resources\Report\GetEmployees::class,
         Constants::DATA_API_GET_FIN_CALL_LEGS_REPORT_METHOD => Resources\Report\GetFinancialCallLegs::class,
     ];
 

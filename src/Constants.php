@@ -64,6 +64,8 @@ class Constants
 
     public const DATA_API_GET_ACCOUNT_RESOURCE = 'get.account';
 
+    public const DATA_API_GET_EMPLOYEE_RESOURCE = 'get.get_employees';
+
     public const DATA_API_GET_CALLS_REPORT_RESOURCE = 'get.calls_report';
 
     public const DATA_API_GET_FIN_CALL_LEG_REPORT_RESOURCE = 'get.financial_call_legs_report';
@@ -80,6 +82,8 @@ class Constants
     public const CALL_API_TAG_CALL_METHOD = 'setCallTag';
 
     public const DATA_API_GET_ACCOUNT_METHOD = 'getAccount';
+
+    public const DATA_API_GET_EMPLOYEE_METHOD = 'getEmployees';
 
     public const DATA_API_GET_CALLS_REPORT_METHOD = 'getCallsReport';
 
