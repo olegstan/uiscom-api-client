@@ -5,12 +5,13 @@ namespace CBH\UiscomClient\Services\DataApi\Resources\Employee;
 
 use CBH\UiscomClient\Constants;
 use CBH\UiscomClient\Services\DataApi\Entities;
+use CBH\UiscomClient\Services\DataApi\Factories\Employee;
 use CBH\UiscomClient\Services\DataApi\Resources\AbstractDataApiResource;
+use CBH\UiscomClient\Exceptions\ApiException;
 
 /**
  * Class GetEmployees
- *
- * @method Entities\Call[] execute()
+ * @package CBH\UiscomClient\Services\DataApi\Resources\Employee
  */
 class GetEmployees extends AbstractDataApiResource
 {
@@ -107,5 +108,36 @@ class GetEmployees extends AbstractDataApiResource
         }
 
         return $params;
+    }
+
+    /**
+     * Выполнение запроса
+     *
+     * @throws \CBH\UiscomClient\Exceptions\ApiException
+     * @throws \CBH\UiscomClient\Exceptions\RequestException
+     * @throws \CBH\UiscomCLient\Exceptions\ResourceException
+     *
+     * @return Entities\Employee[]
+     */
+    public function execute(): Entities\Employee
+    {
+        $factory = new Employee();
+
+        $response = $this->requester->execute($this);
+
+        if (!is_array($response->getResult()->getData())) {
+            throw new ApiException('Bad response');
+        }
+
+        $entities = [];
+        foreach ($response->getResult()->getData() as $entity) {
+            try {
+                $entities[] = $factory->fromArray($entity);
+            } catch (\Exception $e) {
+                throw new ApiException('Error when creating entity', 0, $e);
+            }
+        }
+
+        return $entities;
     }
 }
