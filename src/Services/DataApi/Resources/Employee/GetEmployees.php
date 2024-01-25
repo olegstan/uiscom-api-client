@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace CBH\UiscomClient\Services\DataApi\Resources\Report;
+namespace CBH\UiscomClient\Services\DataApi\Resources\Employee;
 
 use CBH\UiscomClient\Constants;
 use CBH\UiscomClient\Services\DataApi\Entities;
@@ -72,7 +72,7 @@ class GetEmployees extends AbstractDataApiResource
      */
     public function getResourceName(): string
     {
-        return Constants::DATA_API_GET_EMPLOYEE_RESOURCE;
+        return Constants::DATA_API_GET_EMPLOYEES_RESOURCE;
     }
 
     /**
@@ -82,7 +82,7 @@ class GetEmployees extends AbstractDataApiResource
      */
     public function getMethodName(): string
     {
-        return Constants::DATA_API_GET_EMPLOYEE_METHOD;
+        return Constants::DATA_API_GET_EMPLOYEES_METHOD;
     }
 
     /**

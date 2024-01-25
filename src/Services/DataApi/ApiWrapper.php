@@ -11,6 +11,7 @@ use CBH\UiscomClient\Services\DataApi\Resources;
  * Class ApiWrapper
  *
  * @method Resources\Account\GetAccount             getAccount(...$args)
+ * @method Resources\Employee\GetEmployees          getEmployees(...$args)
  * @method Resources\Tag\SetCommunicationTag        setCommunicationTag(int $communicationId, string $communicationType, int $tagId)
  * @method Resources\Report\GetCalls                getCallsReport()
  * @method Resources\Report\GetFinancialCallLegs    getFinancialCallLegsReport()
@@ -21,7 +22,7 @@ class ApiWrapper extends AbstractApiWrapper
         Constants::DATA_API_GET_ACCOUNT_METHOD => Resources\Account\GetAccount::class,
         Constants::DATA_API_SET_COMMUNICATION_TAG_METHOD => Resources\Tag\SetCommunicationTag::class,
         Constants::DATA_API_GET_CALLS_REPORT_METHOD => Resources\Report\GetCalls::class,
-        Constants::DATA_API_GET_EMPLOYEE_METHOD => Resources\Report\GetEmployees::class,
+        Constants::DATA_API_GET_EMPLOYEES_METHOD => Resources\Employee\GetEmployees::class,
         Constants::DATA_API_GET_FIN_CALL_LEGS_REPORT_METHOD => Resources\Report\GetFinancialCallLegs::class,
     ];
 

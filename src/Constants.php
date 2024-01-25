@@ -64,7 +64,7 @@ class Constants
 
     public const DATA_API_GET_ACCOUNT_RESOURCE = 'get.account';
 
-    public const DATA_API_GET_EMPLOYEE_RESOURCE = 'get.get_employees';
+    public const DATA_API_GET_EMPLOYEES_RESOURCE = 'get.get_employees';
 
     public const DATA_API_GET_CALLS_REPORT_RESOURCE = 'get.calls_report';
 
@@ -83,7 +83,7 @@ class Constants
 
     public const DATA_API_GET_ACCOUNT_METHOD = 'getAccount';
 
-    public const DATA_API_GET_EMPLOYEE_METHOD = 'getEmployees';
+    public const DATA_API_GET_EMPLOYEES_METHOD = 'getEmployees';
 
     public const DATA_API_GET_CALLS_REPORT_METHOD = 'getCallsReport';
 
