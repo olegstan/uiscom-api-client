@@ -10,79 +10,81 @@ use CBH\UiscomClient\Services\CallApi\Resources\AbstractCallApiResource;
 
 /**
  * Class StartSimpleCall
- * https://comagic.github.io/call-api/#start.simple_call
+ * @package CBH\UiscomClient\Services\CallApi\Resources\CallCreation
+ *
+ * https://www.uiscom.ru/academiya/spravochnyj-centr/dokumentatsiya-api/call_api/create_call/start_simple_call/
  */
 class StartSimpleCall extends AbstractCallApiResource
 {
     /**
      * @var string - кому первому звоним (operator или contact)
      */
-    private $firstCall = Constants::CLIENT_OPERATOR;
+    protected $firstCall = Constants::CLIENT_OPERATOR;
 
     /**
      * @var bool
      */
-    private $switchAtOnce = false;
+    protected $switchAtOnce = false;
 
     /**
      * @var bool
      */
-    private $earlySwitching = false;
+    protected $earlySwitching = false;
 
     /**
      * @var int
      */
-    private $mediaFileId;
+    protected $mediaFileId;
 
     /**
      * @var string
      */
-    private $virtualPhoneNumber;
+    protected $virtualPhoneNumber;
 
     /**
      * @var bool
      */
-    private $showVirtualPhoneNumber = false;
+    protected $showVirtualPhoneNumber = false;
 
     /**
      * @var string
      */
-    private $contactPhone;
+    protected $contactPhone;
 
     /**
      * @var string
      */
-    private $externalId;
+    protected $externalId;
 
     /**
      * @var string
      */
-    private $dtmf;
+    protected $dtmf;
 
     /**
      * @var string
      */
-    private $direction;
+    protected $direction;
 
     /**
      * @var string
      */
-    private $operatorPhone;
+    protected $operatorPhone;
 
     /**
      * @var string
      */
-    private $operatorConfirmation;
+    protected $operatorConfirmation;
 
     /**
      * @var Entities\OperatorMessage
      */
-    private $operatorMessage;
+    protected $operatorMessage;
 
     /**
      * @var Entities\ContactMessage
      */
-    private $contactMessage;
+    protected $contactMessage;
 
     public function __construct(array $params = [])
     {
@@ -106,7 +108,7 @@ class StartSimpleCall extends AbstractCallApiResource
      *
      * @return StartSimpleCall
      */
-    public function setOperatorFirst(): StartSimpleCall
+    public function setOperatorFirst()
     {
         $this->firstCall = Constants::CLIENT_OPERATOR;
 
@@ -118,7 +120,7 @@ class StartSimpleCall extends AbstractCallApiResource
      *
      * @return StartSimpleCall
      */
-    public function setContactFirst(): StartSimpleCall
+    public function setContactFirst()
     {
         $this->firstCall = Constants::SITE_VISITOR;
 
@@ -128,7 +130,7 @@ class StartSimpleCall extends AbstractCallApiResource
     /**
      * @return StartSimpleCall
      */
-    public function enableSwitchAtOnce(): StartSimpleCall
+    public function enableSwitchAtOnce()
     {
         $this->switchAtOnce = true;
 
@@ -138,7 +140,7 @@ class StartSimpleCall extends AbstractCallApiResource
     /**
      * @return StartSimpleCall
      */
-    public function disableSwitchAtOnce(): StartSimpleCall
+    public function disableSwitchAtOnce()
     {
         $this->switchAtOnce = false;
 
@@ -148,7 +150,7 @@ class StartSimpleCall extends AbstractCallApiResource
     /**
      * @return StartSimpleCall
      */
-    public function enableEarlySwitching(): StartSimpleCall
+    public function enableEarlySwitching()
     {
         $this->earlySwitching = true;
 
@@ -158,7 +160,7 @@ class StartSimpleCall extends AbstractCallApiResource
     /**
      * @return StartSimpleCall
      */
-    public function disableEarlySwitching(): StartSimpleCall
+    public function disableEarlySwitching()
     {
         $this->earlySwitching = false;
 
@@ -170,7 +172,7 @@ class StartSimpleCall extends AbstractCallApiResource
      *
      * @return StartSimpleCall
      */
-    public function setMediaFileId(int $mediaFileId): StartSimpleCall
+    public function setMediaFileId(int $mediaFileId)
     {
         $this->mediaFileId = $mediaFileId;
 
@@ -182,7 +184,7 @@ class StartSimpleCall extends AbstractCallApiResource
      *
      * @return StartSimpleCall
      */
-    public function setVirtualPhoneNumber(string $phone): StartSimpleCall
+    public function setVirtualPhoneNumber(string $phone)
     {
         $this->virtualPhoneNumber = $phone;
 
@@ -192,7 +194,7 @@ class StartSimpleCall extends AbstractCallApiResource
     /**
      * @return StartSimpleCall
      */
-    public function showVirtualPhoneNumber(): StartSimpleCall
+    public function showVirtualPhoneNumber()
     {
         $this->showVirtualPhoneNumber = true;
 
@@ -202,7 +204,7 @@ class StartSimpleCall extends AbstractCallApiResource
     /**
      * @return StartSimpleCall
      */
-    public function showRealPhoneNumber(): StartSimpleCall
+    public function showRealPhoneNumber()
     {
         $this->showVirtualPhoneNumber = false;
 
@@ -214,7 +216,7 @@ class StartSimpleCall extends AbstractCallApiResource
      *
      * @return StartSimpleCall
      */
-    public function setContactPhoneNumber(string $phone): StartSimpleCall
+    public function setContactPhoneNumber(string $phone)
     {
         $this->contactPhone = $phone;
 
@@ -226,7 +228,7 @@ class StartSimpleCall extends AbstractCallApiResource
      *
      * @return StartSimpleCall
      */
-    public function setExternalId(string $externalId): StartSimpleCall
+    public function setExternalId(string $externalId)
     {
         $this->externalId = $externalId;
 
@@ -238,7 +240,7 @@ class StartSimpleCall extends AbstractCallApiResource
      *
      * @return StartSimpleCall
      */
-    public function setDTMF(string $dtmf): StartSimpleCall
+    public function setDTMF(string $dtmf)
     {
         $this->dtmf = $dtmf;
 
@@ -250,7 +252,7 @@ class StartSimpleCall extends AbstractCallApiResource
      *
      * @return StartSimpleCall
      */
-    public function setDirection(string $direction): StartSimpleCall
+    public function setDirection(string $direction)
     {
         $this->direction = $direction;
 
@@ -262,7 +264,7 @@ class StartSimpleCall extends AbstractCallApiResource
      *
      * @return StartSimpleCall
      */
-    public function setOperatorPhoneNumber(string $phone): StartSimpleCall
+    public function setOperatorPhoneNumber(string $phone)
     {
         $this->operatorPhone = $phone;
 
@@ -274,7 +276,7 @@ class StartSimpleCall extends AbstractCallApiResource
      *
      * @return StartSimpleCall
      */
-    public function setOperatorConfirmation(string $confirmation): StartSimpleCall
+    public function setOperatorConfirmation(string $confirmation)
     {
         $this->operatorConfirmation = $confirmation;
 
@@ -286,7 +288,7 @@ class StartSimpleCall extends AbstractCallApiResource
      *
      * @return StartSimpleCall
      */
-    public function setContactMessage(Entities\ContactMessage $contactMessage): StartSimpleCall
+    public function setContactMessage(Entities\ContactMessage $contactMessage)
     {
         $this->contactMessage = $contactMessage;
 
@@ -298,7 +300,7 @@ class StartSimpleCall extends AbstractCallApiResource
      *
      * @return StartSimpleCall
      */
-    public function setContactMessageType(string $type): StartSimpleCall
+    public function setContactMessageType(string $type)
     {
         if (null === $this->contactMessage) {
             $this->contactMessage = new Entities\ContactMessage();
@@ -314,7 +316,7 @@ class StartSimpleCall extends AbstractCallApiResource
      *
      * @return StartSimpleCall
      */
-    public function setContactMessageValue(string $value): StartSimpleCall
+    public function setContactMessageValue(string $value)
     {
         if (null === $this->contactMessage) {
             $this->contactMessage = new Entities\ContactMessage();
@@ -330,7 +332,7 @@ class StartSimpleCall extends AbstractCallApiResource
      *
      * @return StartSimpleCall
      */
-    public function setOperatorMessage(Entities\OperatorMessage $operatorMessage): StartSimpleCall
+    public function setOperatorMessage(Entities\OperatorMessage $operatorMessage)
     {
         $this->operatorMessage = $operatorMessage;
 
@@ -342,7 +344,7 @@ class StartSimpleCall extends AbstractCallApiResource
      *
      * @return StartSimpleCall
      */
-    public function setOperatorMessageType(string $type): StartSimpleCall
+    public function setOperatorMessageType(string $type)
     {
         if (null === $this->operatorMessage) {
             $this->operatorMessage = new Entities\OperatorMessage();
@@ -358,7 +360,7 @@ class StartSimpleCall extends AbstractCallApiResource
      *
      * @return StartSimpleCall
      */
-    public function setOperatorMessageValue(string $value): StartSimpleCall
+    public function setOperatorMessageValue(string $value)
     {
         if (null === $this->operatorMessage) {
             $this->operatorMessage = new Entities\OperatorMessage();

@@ -56,6 +56,8 @@ class Constants
     /* Названия конечных методов API */
     public const CALL_API_START_SIMPLE_CALL_RESOURCE = 'start.simple_call';
 
+    public const CALL_API_START_EMPLOYEE_CALL_RESOURCE = 'start.employee_call';
+
     public const CALL_API_START_MULTI_CALL_RESOURCE = 'start.multi_call';
 
     public const CALL_API_TAG_CALL_RESOURCE = 'tag.call';
@@ -70,6 +72,8 @@ class Constants
 
     /* Названия методов ресурсов */
     public const CALL_API_START_SIMPLE_CALL_METHOD = 'getSimpleCall';
+
+    public const CALL_API_START_EMPLOYEE_CALL_METHOD = 'getEmployeeCall';
 
     public const CALL_API_START_MULTI_CALL_METHOD = 'getMultiCall';
 
