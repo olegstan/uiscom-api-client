@@ -1,17 +1,13 @@
 {
-    "name": "cbh/uiscom-api-client",
+    "name": "olegstan/uiscom-api-client",
     "minimum-stability": "dev",
     "type": "library",
     "description": "PHP client for UIS Api",
     "authors": [
         {
-            "name": "Evgeny Zheleznyakov",
-            "email": "evg@smartis.bi"
+            "name": "Oleg Abramov",
+            "email": "olegstan@inbox.ru"
         },
-        {
-            "name": "Anton Kirin",
-            "email": "a.kirin@smartis.bi"
-        }
     ],
     "autoload": {
         "psr-4": {
