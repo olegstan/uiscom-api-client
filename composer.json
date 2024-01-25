@@ -1,5 +1,6 @@
 {
     "name": "cbh/uiscom-api-client",
+    "minimum-stability": "dev",
     "type": "library",
     "description": "PHP client for UIS Api",
     "authors": [
