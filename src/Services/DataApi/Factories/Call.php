@@ -58,6 +58,10 @@ class Call extends AbstractFactory
             }
         }
 
+        if (isset($data[Fields\Call::CALL_RECORDS]) && is_array($data[Fields\Call::CALL_RECORDS]) && !empty($data[Fields\Call::CALL_RECORDS])) {
+            $call->callRecords[] = $data[Fields\Call::CALL_RECORDS];//TODO entity
+        }
+
         return $call;
     }
 }

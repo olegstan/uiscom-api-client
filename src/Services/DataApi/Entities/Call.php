@@ -46,6 +46,11 @@ class Call
     public $callApiExternalId;
 
     /**
+     * @var
+     */
+    public $callRecords;
+
+    /**
      * @var ReportTag[]
      */
     public $tags = [];

@@ -22,4 +22,6 @@ class Call
     public const CALL_API_EXTERNAL_ID = 'call_api_external_id';
 
     public const TAGS = 'tags';
+
+    public const CALL_RECORDS = 'call_records';
 }
