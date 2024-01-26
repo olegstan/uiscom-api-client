@@ -40,6 +40,8 @@ class Constants
 
     public const CLIENT_OPERATOR = 'operator';
 
+    public const EMPLOYEE = 'employee';
+
     /* Варианты авторизации в API */
     public const AUTH_BY_CREDENTIALS = 1;
 

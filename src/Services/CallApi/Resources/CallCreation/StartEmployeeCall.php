@@ -22,6 +22,18 @@ class StartEmployeeCall extends StartSimpleCall
     protected $employee;
 
     /**
+     * Звонок сначала оператору - затем посетителю
+     *
+     * @return StartSimpleCall
+     */
+    public function setOperatorFirst()
+    {
+        $this->firstCall = Constants::EMPLOYEE;
+
+        return $this;
+    }
+
+    /**
      * @param Entities\Employee $employee
      * @return $this
      */
