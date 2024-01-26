@@ -119,7 +119,7 @@ class GetEmployees extends AbstractDataApiResource
      *
      * @return Entities\Employee[]
      */
-    public function execute(): Entities\Employee
+    public function execute(): array
     {
         $factory = new Employee();
 

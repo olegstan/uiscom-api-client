@@ -48,21 +48,21 @@ class Employee extends AbstractFactory
         if (isset($data[Fields\Employee::CALLS_AVAILABLE])) {
             $employee->calls_available = $data[Fields\Employee::CALLS_AVAILABLE];
         }
-        if (isset($data[Fields\Employee::IN_EXTERNAL_ALLOWED_CALL_DIRECTIONS])) {
-            $employee->in_external_allowed_call_directions = $data[Fields\Employee::IN_EXTERNAL_ALLOWED_CALL_DIRECTIONS];
-        }
-        if (isset($data[Fields\Employee::IN_INTERNAL_ALLOWED_CALL_DIRECTIONS])) {
-            $employee->in_internal_allowed_call_directions = $data[Fields\Employee::IN_INTERNAL_ALLOWED_CALL_DIRECTIONS];
-        }
-        if (isset($data[Fields\Employee::ALLOWED_OUT_CALL_TYPES])) {
-            $employee->allowed_out_call_types = $data[Fields\Employee::ALLOWED_OUT_CALL_TYPES];
-        }
-        if (isset($data[Fields\Employee::OUT_EXTERNAL_ALLOWED_CALL_DIRECTIONS])) {
-            $employee->out_external_allowed_call_directions = $data[Fields\Employee::OUT_EXTERNAL_ALLOWED_CALL_DIRECTIONS];
-        }
-        if (isset($data[Fields\Employee::OUT_INTERNAL_ALLOWED_CALL_DIRECTIONS])) {
-            $employee->out_internal_allowed_call_directions = $data[Fields\Employee::OUT_INTERNAL_ALLOWED_CALL_DIRECTIONS];
-        }
+//        if (isset($data[Fields\Employee::IN_EXTERNAL_ALLOWED_CALL_DIRECTIONS])) {
+//            $employee->in_external_allowed_call_directions = $data[Fields\Employee::IN_EXTERNAL_ALLOWED_CALL_DIRECTIONS];
+//        }
+//        if (isset($data[Fields\Employee::IN_INTERNAL_ALLOWED_CALL_DIRECTIONS])) {
+//            $employee->in_internal_allowed_call_directions = $data[Fields\Employee::IN_INTERNAL_ALLOWED_CALL_DIRECTIONS];
+//        }
+//        if (isset($data[Fields\Employee::ALLOWED_OUT_CALL_TYPES])) {
+//            $employee->allowed_out_call_types = $data[Fields\Employee::ALLOWED_OUT_CALL_TYPES];
+//        }
+//        if (isset($data[Fields\Employee::OUT_EXTERNAL_ALLOWED_CALL_DIRECTIONS])) {
+//            $employee->out_external_allowed_call_directions = $data[Fields\Employee::OUT_EXTERNAL_ALLOWED_CALL_DIRECTIONS];
+//        }
+//        if (isset($data[Fields\Employee::OUT_INTERNAL_ALLOWED_CALL_DIRECTIONS])) {
+//            $employee->out_internal_allowed_call_directions = $data[Fields\Employee::OUT_INTERNAL_ALLOWED_CALL_DIRECTIONS];
+//        }
         if (isset($data[Fields\Employee::EMAIL])) {
             $employee->email = $data[Fields\Employee::EMAIL];
         }
