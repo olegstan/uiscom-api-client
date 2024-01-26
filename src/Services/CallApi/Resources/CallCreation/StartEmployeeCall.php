@@ -33,6 +33,22 @@ class StartEmployeeCall extends StartSimpleCall
     }
 
     /**
+     * @return string
+     */
+    public function getResourceName(): string
+    {
+        return Constants::CALL_API_START_EMPLOYEE_CALL_RESOURCE;
+    }
+
+    /**
+     * @return string
+     */
+    public function getMethodName(): string
+    {
+        return Constants::CALL_API_START_EMPLOYEE_CALL_METHOD;
+    }
+
+    /**
      * @throws ResourceException
      *
      * @return array
