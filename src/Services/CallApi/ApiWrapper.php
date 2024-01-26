@@ -12,7 +12,7 @@ use CBH\UiscomClient\Services\AbstractApiWrapper;
  * Class ApiWrapper
  *
  * @method Resources\CallCreation\StartSimpleCall getSimpleCall(array $params = [])
- * @method Resources\CallCreation\StartSimpleCall getEmployeeCall(array $params = [])
+ * @method Resources\CallCreation\StartEmployeeCall getEmployeeCall(array $params = [])
  * @method Resources\CallCreation\StartMultiCall  getMultiCall(array $params = [])
  * @method Resources\CallActions\TagCall          setCallTag(Entities\CallSession $callSession, int $tagId)
  */

@@ -39,7 +39,56 @@ class StartEmployeeCall extends StartSimpleCall
      */
     public function buildParamsForRequest(): array
     {
-        $params = parent::buildParamsForRequest();
+        if (null === $this->virtualPhoneNumber) {
+            throw new ResourceException('Parameter "virtual_phone_number" is required');
+        }
+
+        if (null === $this->contactPhone) {
+            throw new ResourceException('Contact phone is required');
+        }
+
+        $params = [
+            'first_call' => $this->firstCall,
+            'virtual_phone_number' => $this->virtualPhoneNumber,
+            'contact' => $this->contactPhone,
+            'switch_at_once' => $this->switchAtOnce,
+            'early_switching' => $this->earlySwitching,
+            'show_virtual_phone_number' => $this->showVirtualPhoneNumber,
+        ];
+
+        if (null !== $this->mediaFileId) {
+            $params['media_file_id'] = $this->mediaFileId;
+        }
+
+        if (null !== $this->externalId) {
+            $params['external_id'] = $this->externalId;
+        }
+
+        if (null !== $this->dtmf) {
+            $params['dtmf_string'] = $this->dtmf;
+        }
+
+        if (null !== $this->direction) {
+            $params['direction'] = $this->direction;
+        }
+
+        if (null !== $this->operatorConfirmation) {
+            $params['operator_confirmation'] = $this->operatorConfirmation;
+        }
+
+        if (null !== $this->contactMessage && null !== $this->contactMessage->type && null !== $this->contactMessage->value) {
+            $params['contact_message'] = [
+                'type' => $this->contactMessage->type,
+                'value' => $this->contactMessage->value,
+            ];
+        }
+
+        if (null !== $this->operatorMessage && null !== $this->operatorMessage->type && null !== $this->operatorMessage->value) {
+            $params['operator_message'] = [
+                'type' => $this->operatorMessage->type,
+                'value' => $this->operatorMessage->value,
+            ];
+        }
 
         if (null !== $this->employee && null !== $this->employee->id) {
             $params['employee']['id'] = $this->employee->id;
