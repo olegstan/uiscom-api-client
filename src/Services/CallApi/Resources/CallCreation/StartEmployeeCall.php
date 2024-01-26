@@ -17,6 +17,11 @@ use CBH\UiscomClient\Services\CallApi\Resources\AbstractCallApiResource;
 class StartEmployeeCall extends StartSimpleCall
 {
     /**
+     * @var string - кому первому звоним (operator или contact)
+     */
+    protected $firstCall = Constants::EMPLOYEE;
+
+    /**
      * @var
      */
     protected $employee;
