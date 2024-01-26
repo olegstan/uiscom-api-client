@@ -21,6 +21,8 @@ class Call
 
     public const CALL_API_EXTERNAL_ID = 'call_api_external_id';
 
+    public const CALL_PHONE_NUMBER = 'contact_phone_number';
+
     public const TAGS = 'tags';
 
     public const CALL_RECORDS = 'call_records';

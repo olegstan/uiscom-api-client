@@ -9,7 +9,10 @@ class Call
      * @var int
      */
     public $id;
-
+    /**
+     * @var int
+     */
+    public $userId;
     /**
      * @var \DateTime
      */
@@ -44,6 +47,11 @@ class Call
      * @var string
      */
     public $callApiExternalId;
+
+    /**
+     * @var string
+     */
+    public $callPhoneNumber;
 
     /**
      * @var
