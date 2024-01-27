@@ -10,10 +10,6 @@ class Call
      */
     public $id;
     /**
-     * @var int
-     */
-    public $userId;
-    /**
      * @var \DateTime
      */
     public $startTime;
