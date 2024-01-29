@@ -53,6 +53,14 @@ class Call
      * @var
      */
     public $callRecords;
+    /**
+     * @var
+     */
+    public $wavCallRecords;
+    /**
+     * @var
+     */
+    public $fullRecordFileLink;
 
     /**
      * @var ReportTag[]
