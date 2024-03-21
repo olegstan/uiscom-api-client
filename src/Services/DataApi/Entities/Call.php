@@ -42,6 +42,11 @@ class Call
     /**
      * @var string
      */
+    public $direction;
+
+    /**
+     * @var string
+     */
     public $callApiExternalId;
 
     /**
@@ -57,10 +62,6 @@ class Call
      * @var
      */
     public $wavCallRecords;
-    /**
-     * @var
-     */
-    public $fullRecordFileLink;
 
     /**
      * @var ReportTag[]

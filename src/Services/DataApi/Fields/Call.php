@@ -25,6 +25,8 @@ class Call
 
     public const TAGS = 'tags';
 
+    public const DIRECTION = 'direction';
+
     public const CALL_RECORDS = 'call_records';
 
     public const WAV_CALL_RECORDS = 'wav_call_records';

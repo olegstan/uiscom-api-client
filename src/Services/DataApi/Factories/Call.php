@@ -55,6 +55,10 @@ class Call extends AbstractFactory
             $call->callPhoneNumber = $data[Fields\Call::CALL_PHONE_NUMBER];
         }
 
+        if (isset($data[Fields\Call::DIRECTION])) {
+            $call->direction = $data[Fields\Call::DIRECTION];
+        }
+
         if (isset($data[Fields\Call::TAGS]) && is_array($data[Fields\Call::TAGS]) && !empty($data[Fields\Call::TAGS])) {
             $reportTagFactory = new ReportTag();
             foreach ($data[Fields\Call::TAGS] as $reportTag) {
