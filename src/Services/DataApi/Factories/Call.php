@@ -55,6 +55,10 @@ class Call extends AbstractFactory
             $call->callPhoneNumber = $data[Fields\Call::CALL_PHONE_NUMBER];
         }
 
+        if (isset($data[Fields\Call::VIRTUAL_PHONE_NUMBER])) {
+            $call->virtualPhoneNumber = $data[Fields\Call::VIRTUAL_PHONE_NUMBER];
+        }
+
         if (isset($data[Fields\Call::DIRECTION])) {
             $call->direction = $data[Fields\Call::DIRECTION];
         }

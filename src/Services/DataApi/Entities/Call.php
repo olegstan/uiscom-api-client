@@ -55,6 +55,11 @@ class Call
     public $callPhoneNumber;
 
     /**
+     * @var string
+     */
+    public $virtualPhoneNumber;
+
+    /**
      * @var
      */
     public $callRecords;

@@ -23,6 +23,8 @@ class Call
 
     public const CALL_PHONE_NUMBER = 'contact_phone_number';
 
+    public const VIRTUAL_PHONE_NUMBER = 'virtual_phone_number';
+
     public const TAGS = 'tags';
 
     public const DIRECTION = 'direction';
